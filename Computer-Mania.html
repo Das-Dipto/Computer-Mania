@@ -1,0 +1,1658 @@
+<!-- This project deals with online store related to PC components and tech gadgets.
+    
+### Tech stack: HTML5, CSS3, Javascript(ES6) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Mania</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sidebar.css">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+
+        .grid-container{
+            position: relative;
+            display: grid;
+            grid-template-areas: 
+            'section-1'
+            'section-2'
+            'section-3'
+            'section-4'
+            'section-5';
+        }
+
+        .overlay{
+            display: none;
+            position: fixed;
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65));
+            width: 100%;
+            min-height: 100vh;
+            top:-40rem;
+            left:0rem;
+            visibility: hidden;
+            padding-bottom: 5rem;
+            opacity: 0;
+            z-index:4;
+            transition: 1s all ease-in-out;
+        }
+
+        .overlay_special_css{
+            top:0rem;
+            visibility:visible;
+            opacity:1;
+        }
+
+        .overlay_item{
+            width: 95%;
+            margin:0 auto;
+            display: flex;
+            flex-flow: column wrap;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .overlay_item i{
+            align-self: flex-end;
+            color:white;
+            font-size: 2rem;
+        }
+
+        .cls:hover{
+            color:red;
+        }
+
+        .overlay_box{
+            border-radius: 5px;
+            background-color: white;
+            /* margin-top: 8rem; */
+            padding: 0rem 1rem;
+            padding-bottom: 1rem;
+            width:40%;
+        }
+
+        .overlay_box h2{
+            font-size: 2.5rem;
+            line-height: 1.5;
+        }
+
+        .overlay_box h4{
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .overlay_box input{
+            outline: none;
+            border:1px solid #7e7b7b;
+            border-radius: 5px;
+            padding:0.5rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .input_flex{
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        #fname, #sname{
+            width: 48%;
+        }
+
+        #mob, #pass{
+            width: 100%;
+        }
+
+        label{
+            display: block;
+            font-size: 0.80rem;
+        }
+
+        span{
+            margin-left: 0.1rem;
+            font-size: 0.70rem;
+            font-weight: 500;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 0.90rem;
+            height: 0.90rem;
+            color:white;
+            background-color: #5f5d5d;
+            border-radius: 50%;
+        }
+
+        .Dob{
+            margin-top: 0.15rem;
+            width: 100%;
+            display: flex;
+            flex-flow:row wrap;
+            justify-content: space-between;
+        }
+
+        #dob{
+            width: 30%;
+            padding:0.4rem;
+            outline: none;
+            border:1px solid #7e7b7b;
+            border-radius: 5px;
+            font-size:1rem;
+        }
+
+        .gen{
+            margin-top: 0.9rem;
+        }
+
+        .gender{
+            margin-top: 0.15rem;
+            width:100%;
+        }
+
+        .gender form{
+            width: 100%;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content:space-between;
+        }
+
+        .gender form div{
+            display:flex;
+            justify-content:space-between;
+            align-items: center;
+            width:30%;
+            padding:0.4rem;
+            outline: none;
+            border:1px solid #7e7b7b;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        form div > label{
+            font-size:1rem;
+        }
+
+        form div > input{
+            position: absolute;
+            top:0.55rem;
+            right:0.50rem;
+        }
+
+        .sub{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .sub > input{
+            width: 40%;
+            text-align: center;
+            color:white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            background-color: rgb(0, 164, 0);
+            outline: none;
+            border-radius: 5px;
+            margin-top: 2rem;
+        }
+
+        .sub > input:hover{
+            background-color: #5F8D52;
+        }
+
+
+        .section-1{
+            grid-area: section-1;
+            width: 100%;  
+            height: 80vh;
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), 
+                              url('images/comp1.png');
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .navbar{
+            width: 100%;
+            background-color: #232F3E;
+        }
+
+        .section1_container{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 0;  
+        }
+
+        .section1_container > h1{
+            font-family: 'Merriweather', serif;
+            /* background: linear-gradient(90deg, #ff0000, #ffff00, #ff00f3, #0033ff, #ff00c4, #ff0000);
+            background-size: 200%;
+            text-transform: uppercase;
+            font-size:1.78rem;
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            animation: heading_animation 10s linear infinite; */
+            color:white;
+            margin-right: 14rem;
+            margin-left: 2rem;
+        }
+
+        @keyframes heading_animation{
+            0%{
+                background-position: 0%;
+            }
+
+            100%{
+                background-position: 400%;
+            }
+        }
+
+        aside{
+            display: flex;
+            font-family: 'Roboto', sans-serif;
+            color:white;
+        }
+        
+        .content{
+            display: flex;
+            margin-right: 2.2rem;
+            align-items: center;
+            padding: 0.6rem 0.4rem;
+        }
+
+        .content:hover{
+            cursor:pointer;
+        }
+
+        .content i{
+            font-size: 1.25rem;
+            margin-right: 0.6rem;
+        }
+
+        .content:nth-child(4) i{
+            animation: FADE 1.5s infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease;
+        }
+
+        @keyframes FADE{
+            0%{
+              opacity:0;  
+            }
+
+            100%{
+              opacity: 1;
+            }   
+        }
+
+        .content:last-child {
+            background-color: #D93826;
+            transition: all 0.10s ease-in-out;
+        }
+        
+        .content:last-child:hover{
+            box-shadow: 0px 0px 30px 5px #D93826,  0px 0px 30px 5px #D93826;
+        }
+
+        .content h4{
+            font-size: 0.9rem;
+        }
+        
+        .content h6{
+            font-size: 0.75rem;
+        }
+
+        .sticky-navbar{
+            background-color: black;
+            font-family: 'Merriweather', serif;
+        }
+        
+        .sticky-navbar .sticky-content{
+            width: 94%;
+            margin:0 auto;
+            display: flex;
+            color:white;
+            align-items: center;
+        }
+        
+        .category{
+            display: flex;
+            align-items: center;
+            font-size: 0.65rem;
+            margin-right:10rem;
+            position: relative;
+            padding: 1rem 0rem;
+        }
+
+    
+        .category .Icon{
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 50%;
+            border:2px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 0.5rem;
+        }
+
+        a{
+            text-decoration: none;
+            color:white;
+        }
+
+        a:visited{
+            color:white;
+        }
+
+        a:hover{
+            color:red;
+        }
+
+         a:active{
+            color:white
+         }
+
+
+        ul{
+            list-style-type: none;
+        }
+
+        .category_list{
+            position: absolute;
+            width: 11rem;
+            background-color:#3b4858;
+            font-size: 0.80rem;
+            padding: 0.4rem;
+            top:5rem;
+            left:0rem;
+            opacity: 0;
+            visibility: hidden; 
+            transition: 0.5s all;
+        }
+
+        .category:hover .category_list{
+            top:3.4rem;
+            opacity: 1;
+            visibility: visible;
+        } 
+
+
+        .category  ul  li{
+            padding:0.5rem 0;
+            position: relative;
+        }
+
+       .common_flex > div > ul  > li > i{
+            margin-right: 0.5rem;
+            font-size: 0.55rem;
+            margin-top: 0.24rem;
+        }
+
+        .category_list > li > i{
+            margin-left: 0.2rem;
+            margin-right: 0.3rem;
+        }
+
+        .common_flex{
+            display: flex;
+            flex-wrap: wrap;
+            width: 65rem;
+            background-color: orange;
+            justify-content: center;
+            position: absolute;
+            left:10.5rem;
+            top:-0.4rem;
+        }
+
+        .common_flex > div {
+            margin: 0.4rem 1.4rem;
+            padding: 0.5rem 0rem;
+        }
+
+        .common_flex > div > h3{
+            margin-bottom: 1rem;
+        }
+
+        .common_flex > div > ul > li{
+            width: 12rem;
+            display: flex;            
+        }
+
+        .common_flex > div > ul  li:hover{
+            color:red;
+        }
+
+        .common_flex{
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.5s all;
+        }
+
+        .category_list > li:hover .common_flex{
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .BrandPC_container {
+            width: 40rem;
+            justify-content: flex-start;
+        }
+
+        .BrandPC_container > div > ul > li{
+            width: 10rem;
+            display: flex;            
+        }
+
+
+        .Icon > i{
+            font-size: 0.7rem;
+        }
+
+        #search{
+            padding:0.65rem 0.5rem;
+            width: 40%;
+            border-radius: 5px;
+            margin-right: 2rem;
+        }
+
+        .icon{
+            text-align: center; 
+            margin-top: 0.4rem;
+            margin-right: 2rem;
+        }
+        
+        .icon > i{
+            font-size: 1.3rem;
+        }
+
+        .icon > h5{
+            font-size: 0.8rem;
+        }
+
+        .icon5{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.4rem  0.6rem;
+            border-radius:8px;
+            font-family: 'Roboto', sans-serif;
+            color:#7e7b7b;
+            background-color: #DEEBF7;
+            margin-right: 0rem;
+            min-width: 10%;
+            position:relative;
+         }
+
+         .icon5 > i{
+            margin-left: 0.60rem;
+            transform: rotateY(200deg);
+         }
+
+         .icon5 > p{
+            position: absolute;
+            width: 1rem;
+            height: 1rem;
+            background-color: red;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            font-weight: bold;
+            right: -9px;
+            top:-8px;
+         }
+
+         .res_bar{
+            display: none;
+         }
+ 
+         
+         .section-2{
+            grid-area: section-2;
+            width: 100%;  
+            background-color: #F2F4F8;
+            padding:1rem 0;
+        } 
+
+        .first_section{
+            width:100%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+            
+        .first_section h1{
+            font-size:1.3rem;
+            text-align:center;
+            line-height: 2;
+        }
+
+        .first_section p{
+            line-height: 1.5;
+            font-size:0.75rem;
+            text-align:center;
+            color:#ACADB0;
+            font-weight: 600;
+        }
+
+        .product{
+            width:90%;
+            margin:0 auto;
+            margin-top:1.5rem;
+            /* border:1px solid green; */
+            display:flex;
+            flex-flow:row wrap;
+            justify-content: space-between;
+        }
+
+        .prod{
+            width:12%;
+            background-color: white;
+            border:1px solid rgb(237, 237, 240);
+            text-align: center;
+            padding: 1.5rem 0;
+            border-radius: 5px;
+            margin-bottom: 0.2rem;
+        }
+
+        .prod:hover{
+            box-shadow: 0 0 18px 4px rgb(231, 231, 231);
+        }
+
+        .prod h4{
+            line-height: 2;
+            font-size: 0.85rem;
+        }
+
+        .prod:hover h4{
+            color:#FA8E7A;
+        }
+
+        .si{
+            margin-top:-0.35rem;
+        }
+
+
+         @media screen and (max-width:1200px){
+             .section1_container{
+                 display: none;
+             }
+         }
+
+         @media screen and (max-width:1024px){
+            .sticky-navbar{
+                display: none;
+             }
+
+             .res_bar{
+                display: block;
+             }
+
+             .bar{
+                display: flex;
+                justify-content: space-around;
+                padding: 0.3rem 0rem;
+                background-color: orange;
+            }
+
+            .bar > h3{
+                color:black;
+                font-size: 1rem;                
+            }
+
+            .common_bar{
+                width: 100%;
+                background-color: black;
+            }
+
+            .res_navbar_content{
+                padding:0.5rem 0rem;
+                width: 90%;
+                margin:0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .res_navbar_content > h1{
+                font-family: 'Merriweather', serif;
+                font-size: 1.5rem;
+                /* background: linear-gradient(90deg, #ff0000, #ffff00, #ff00f3, #0033ff, #ff00c4, #ff0000);
+                background-size: 200%;
+                text-transform: uppercase;
+                font-size:1.78rem;
+                -webkit-text-fill-color: transparent;
+                -webkit-background-clip: text;
+                animation: heading_animation 10s linear infinite; */
+                color:white;
+                margin-left: 1rem;
+            }
+
+            @keyframes heading_animation{
+                0%{
+                    background-position: 0%;
+                }
+
+                100%{
+                    background-position: 400%;
+                }
+            }
+
+            .Icon{
+                width: 1.6rem;
+                height: 1.6rem;
+                border-radius: 50%;
+                border:2px solid white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 0.5rem;
+            }
+
+            .Icon > i{
+                font-size: 0.7rem;
+                color:white;
+            }
+
+            .res_icon > i{
+                color:white;
+                font-weight: bold;
+                font-size: 1.5rem;
+            }
+
+            .icon55{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0.4rem  0.6rem;
+                border-radius:8px;
+                font-family: 'Roboto', sans-serif;
+                position:relative;
+            }
+            
+            .icon55 > i{
+                font-size: 1.4rem;
+                color:white;    
+                font-weight: bold;
+                transform: rotateY(200deg);
+            }
+
+            .icon55 > p{
+                position: absolute;
+                width: 1rem;
+                height: 1rem;
+                background-color: red;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                font-size: 0.6rem;
+                font-weight: bold;
+                left: 25px;
+                top:-2px;
+            }
+
+            .search_bar{
+                padding:0.8rem 0;
+            }
+
+            .res_searchbar{
+                width: 88%;
+                margin:0 auto;
+            }
+
+            #search{
+                padding:0.8rem 1rem;
+                width: 100%;
+                min-width: 14rem;
+                border-radius: 5px;
+            }
+         }
+
+         @media screen and (min-width:1025px) and (max-width:1220px){
+            .common_flex{
+                width: 50rem;
+             }
+
+             .overlay_box{
+                width: 48%;
+             }
+         }
+
+         @media screen and (min-width:769px) and (max-width:1024px){
+            .category_list{
+                display: none;
+            }
+
+            .overlay_box{
+                width: 48%;
+             }
+         }
+
+         @media screen and (min-width:481px) and (max-width:768px){
+            .category_list{
+                display: none;
+            }
+
+            .res_searchbar{
+                width: 80%;
+            }
+
+            .overlay_box{
+                width: 60%;
+             }
+
+             .prod{
+                width: 24%;
+             }
+         }
+
+         @media screen and (min-width:320px) and (max-width:480px){
+            .category_list{
+                display: none;
+            }
+
+            .res_searchbar{
+                width: 70%;
+            }
+
+            .res_navbar_content > h1{
+                font-size: 1.2rem;
+                margin-right: 0rem;
+                margin-left: 0rem;
+            }
+
+            .overlay_box{
+                width: 80%;
+             }
+
+             .gender form div{
+                width: 45%;
+                margin-bottom: 0.5rem;
+             }
+
+             .prod{
+                width: 32%;
+             }
+         }
+
+         @media screen and (max-width:319px){
+            .category_list{
+                display: none;
+            }
+
+            .bar > h3{
+                margin-right: 0rem;
+            }
+
+            .res_navbar_content > h1{
+                font-size: 0.80rem;
+                margin-right:0rem;
+                margin-left: 0rem;
+            }
+
+            .res_searchbar{
+                width: 25%;
+                margin:0 ;
+                margin-left: 1.4rem;
+            }
+
+            #fname, #sname{
+                width: 100%;
+            }
+
+            .overlay_box h2{
+                font-size: 1.5rem;
+            }
+
+            .overlay_box{
+                width: 80%;
+             }
+
+             .gender form div{
+                width: 70%;
+                margin-bottom: 0.5rem;
+             }
+
+             .prod{
+                width: 48%;
+             }
+        }
+    </style>
+   
+</head>
+<body>
+        <div class="grid-container">
+            <div class="overlay">
+                <div class="overlay_item">
+                    <i class="fas fa-times cls"></i>
+                    <div class="overlay_box">
+                        <h2>Sign up</h2>
+                        <h4>It's quick and easy.</h4>
+                        <div class="input_flex">
+                            <input type="search" name="fname" id="fname" placeholder="First name">
+                            <input type="search" name="sname" id="sname" placeholder="Surname">
+                        </div>
+                        <input type="search" name="Mob" id="mob" placeholder="Mobile number or email address">
+                        <input type="search" name="pass" id="pass" placeholder="New password">
+
+                        <label for="dob">Date of Birth <span>?</span></label>
+                        <div class="Dob">
+                            <select id="dob" name="date">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+
+                            <select id="dob" name="month">
+                                <option value="Jan">January</option>
+                                <option value="Feb">February</option>
+                                <option value="Mar">March</option>
+                                <option value="Apr">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October" selected>October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+                            </select>
+
+                            <select id="dob" name="year">
+                                <option value="2012">2012</option>
+                                <option value="2013">2013</option>
+                                <option value="2014">2014</option>
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022" selected>2022</option>
+                                <option value="2023">2023</option>
+                            </select>
+                        </div>
+
+                        <label class="gen" for="gender">Gender <span>?</span></label>
+                        <div class="gender">
+                            <form action="">
+                                <div>
+                                    <label for="female">Female</label><br>
+                                    <input type="radio" id="female" name="gender" value="female">
+                                </div>
+                                <div>
+                                    <label for="male">Male</label><br>
+                                    <input type="radio" id="male" name="gender" value="male">
+                                </div>
+                                <div>
+                                    <label for="custom">Custom</label><br>
+                                    <input type="radio" id="custom" name="gender" value="custom">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="sub">
+                            <input type="submit" value="Sign Up">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-1">
+                <div class="res_bar">
+                    <div class="bar">
+                        <h3>DESKTOP OFFER</h3>
+                        <h3>LAPTOP</h3>
+                    </div>
+            
+                    <div class="res_navbar common_bar">
+                        <div class="res_navbar_content">
+                            <div class="Icon menuopen">
+                                <i class="fas fa-database"></i>
+                            </div>
+
+                            <div class="side_bar">
+                                <div class="first">
+                                    <h2>Select a category</h2>
+                                    <i class="far fa-times close"></i>
+                                </div>
+                                <div class="second">                   
+                                    <h2>Category</h2>
+                                    <i class="fal fa-plus open"></i>
+                                    <div class="inner_content">
+                                        <ul class="inner_dropdown_list">
+                                            <li>
+                                                    <div class="wrapper">
+                                                        <div class="lft_content">
+                                                            <i class="fas fa-laptop"></i>
+                                                            Laptop & Tablet
+                                                        </div>
+                                                        <div class="cls_icon">
+                                                            <i class="fal fa-plus list-1 list"></i>
+                                                        </div>
+                                                    </div>   
+                                            </li>
+                                            <li>
+                                                <div class="right-laptop right">
+                                                    <div class="dropdown_list-1 dropdown_list">
+                            
+                                                    </div>
+                                                </div>   
+                                            </li>
+                                            <li>
+                                                <div class="wrapper">
+                                                    <div class="lft_content">
+                                                        <i class="fas fa-desktop"></i>
+                                                        Desktop & PC
+                                                    </div>
+                                                    <div class="cls_icon">
+                                                        <i class="fal fa-plus list-2 list"></i>
+                                                    </div>
+                                                </div>
+                                                
+                                            </li>
+                                            <li>
+                                                <div class="right-dsk right">
+                                                    <div class="dropdown_list-2 dropdown_list">
+                        
+                                                    </div>
+                                                </div>    
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h1>COMPUTER MANIA</h1>
+                            <div class="icon55">
+                                <i class="fal fa-cart-plus"></i>
+                                <p>0</p>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="search_bar common_bar">
+                        <div class="res_searchbar">
+                            <input type="search" name="search" id="search" placeholder="Search here......">
+                        </div>
+                    </div>
+                
+                </div>
+
+
+                <div class="navbar">
+                    <div class="section1_container">
+                        <h1>Computer Mania</h1>
+                        <aside>
+                            <div class="content cont1">
+                                <i class="fas fa-phone-alt"></i>
+                                <div class="ct">
+                                    <h4>09613828201</h4>
+                                    <h6>Call us anytime</h6>
+                                </div>
+                            </div>
+    
+                            <div class="content cont2">
+                                <i class="far fa-laptop"></i>
+                                <div class="ct">
+                                    <h4>Laptop Deals</h4>
+                                    <h6>Flash Sale</h6>
+                                </div>
+                            </div>
+    
+                            <div class="content cont3">
+                                <i class="fas fa-desktop"></i>
+                                <div class="ct">
+                                    <h4>Desktop Offer</h4>
+                                    <h6>Best Discount</h6>
+                                </div>
+                            </div>
+    
+                            <div class="content cont4">
+                                <i class="far fa-gift"></i>
+                                <div class="ct">
+                                    <h4>Offers</h4>
+                                    <h6>Running Offers</h6>
+                                </div>
+                            </div>
+
+                            <div class="content cont5">
+                                <i class="fas fa-phone-laptop"></i>
+                                <div class="ct">
+                                    <h4>PC Builder</h4>
+                                    <h6>configure now</h6>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+                <div class="sticky-navbar">
+                    <div class="sticky-content">
+                        <div class="category">
+                            <div class="Icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h2>Category</h2>
+                                        <ul class="category_list">
+                                        <li>
+                                            <i class="fas fa-laptop"></i>
+                                            Laptop & Tablet
+                                            <div class="laptop_container common_flex Dp">
+                                                <div class="laptop">
+                                                    <h3>Laptop</h3>
+                                                    <ul class="laptop_list">
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#a1">Asus</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#a2">HP</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#a3">Dell</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#a4">Lenovo</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#a5">Acer</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#a6">Msi</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#a7">Apple</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="Gaming_laptop">
+                                                        <h3>GAMING LAPTOP</h3>
+                                                        <ul class="Gaminglaptop_list">
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a8">Asus gaming laptop</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a9">Lenovo gaming laptop</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a10">Msi gaming laptop</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a11">Gigabyte gaming laptop</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a12">Acer gaming laptop</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a13">HP gaming laptop</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a14">Dell gaming laptop</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="Tablet_PC">
+                                                        <h3>TABLET PC</h3>
+                                                        <ul class="TabletPC_list">
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a15">Amazon</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a16">Apple Tablet</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a17">Huwei</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a18">Lenovo</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a19">Realme</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a20">Twinmos</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a21">Walton</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="GraphicsTablet">
+                                                        <h3>GRAPHICS TABLET</h3>
+                                                        <ul class="GraphicsTablet_list">
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a22">Veikk</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a23">Wapcom</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a24">Xp-pen</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a25">Graphics Tablet Accessories</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#aa5">Huion</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="LaptopRam">
+                                                        <h3>LAPTOP RAM</h3>
+                                                        <ul class="LaptopRam_list">
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a26">Geil</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a27">Kingston</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a28">Transcend</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a29">Crucial</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a30">Apacer</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a30">G.skill</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a30">Patriot</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="LaptopCooler">
+                                                        <h3>LAPTOP COOLER</h3>
+                                                        <ul class="LaptopCooler_list">
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#ab31">Cooler Master</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#ab32">Deep Cool</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#ab33">Havit</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#ab34">Logic</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#ab35">Nuoxi</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#ab36">Orico</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#ab37">Thermaltake</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="LaptopBattery">
+                                                        <h3>LAPTOP BATTERY</h3>
+                                                        <ul class="LaptopBattery_list">
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a38">Acer Battery</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a32">Asus Battery</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a33">HP Battery</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a34">Lenovo Battery</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a35">Fujitsu Battery</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a36">Apple Battery</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#a37">Dell Battery</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="LaptopAccessories">
+                                                        <h3>LAPTOP ACCESSORIES</h3>
+                                                        <ul class="LaptopAccessories_list">
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#ac38">Bag and Backpack</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#ac32">Blower</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#ac33">Caddy</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#ac34">Dock</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#ac35">DVD writer</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#ac36">Laptop Adapter</a>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fas fa-play"></i>
+                                                                <a href="#ac37">Laptop Desk</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-desktop"></i>
+                                            Desktop & Brand PC
+                                            <div class="BrandPC_container common_flex Dp">
+                                                <div class="BrandPC">
+                                                    <h3>BRAND PCs</h3>
+                                                    <ul class="BrandPC_list">
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#b1">Hp PC</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#b2">Dell</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#b3">Apple</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#b4">Asus</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#b5">Gigabyte</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#b6">Lenovo</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#b7">Asus</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="GamingPC">
+                                                    <h3>GAMING PC</h3>
+                                                    <ul class="GamingPC_list">
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#b11">AMD Best PC</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#b21">Gigabyte PC Bundle</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#b31">ICUE Certified PC</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#b41">Intel Best PC</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="PCcombo">
+                                                    <h3>PC COMBO</h3>
+                                                    <ul class="PCcombo_list">
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#b8">AMD Combo</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#b9">GPU Combo</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#b10">INTEL PC</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="AIO">
+                                                    <h3>All in One</h3>
+                                                    <ul class="AIO_list">
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#ba8">Asus</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#ba9">Dell</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#ba10">Hp</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#ba14">Lenovo</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#ba15">Walton</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="AIOMP">
+                                                    <h3>All in one mini PC</h3>
+                                                    <ul class="AIOMP_list">
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#bz8">ASRock Mini PC</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#bz9">Asus Mini PC</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#bz10">Gigabyte Mini PC</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fas fa-play"></i>
+                                                            <a href="#bz13">Intel Mini PC</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                </div>
+                                        </li>
+                                </ul>
+                        </div>
+                        <input type="search" id="search" name="search" placeholder="Search here....        ">
+                         <div class="icon1 icon">
+                            <i class="fas fa-user"></i>
+                            <h5>Account</h5>
+                         </div>
+                         <div class="icon2 icon">
+                            <i class="far fa-heart"></i>
+                            <h5>Wishlist</h5>
+                         </div>
+                         <div class="icon3 icon">
+                            <i class="fad fa-arrows-alt"></i>
+                            <h5>Compare</h5>
+                         </div>
+                         <div class="icon4 icon">
+                            <i class="far fa-comment-alt-lines"></i>
+                            <h5>Blog</h5>
+                         </div>
+                         <div class="icon5 icon">
+                            <h5>0 item(s) - 0$</h5>
+                            <i class="fal fa-cart-plus"></i>
+                            <p>0</p>
+                         </div>
+                       
+                    </div>
+                </div>
+            </div>
+    
+            <div class="section-2">
+                <div class="first_section">
+                    <h1>Featured Category</h1>
+                    <p>Select your Desired Product from Featured Category!</p>
+                </div>
+                <div class="second_section">
+                    <div class="product">
+                        <div class="prod">
+                            <img src="images/comp2.png" alt="">
+                            <h4>Laptop</h4>
+                        </div>
+                        <div class="prod">
+                            <img src="images/comp3.png" alt="">
+                            <h4>Processor</h4>
+                        </div>
+                        <div class="prod">
+                            <img src="images/comp4.png" alt="">
+                            <h4>Motherboard</h4>
+                        </div>
+                        <div class="prod">
+                            <img src="images/comp5.png" alt="">
+                            <h4>RAM</h4>
+                        </div>
+                        <div class="prod">
+                            <img src="images/comp6.png" alt="">
+                            <h4>SSD</h4>
+                        </div>
+                        <div class="prod">
+                            <img src="images/comp7.png" alt="">
+                            <h4>Keyboard</h4>
+                        </div>
+                        <div class="prod">
+                            <img src="images/comp8.png" alt="">
+                            <h4>Mouse</h4>
+                        </div>
+                        <div class="prod">
+                            <img class="si" src="images/comp9.png" alt="">
+                            <h4>Headphone</h4>
+                        </div>
+                        <div class="prod">
+                            <img src="images/comp10.png" alt="">
+                            <h4>Router</h4>
+                        </div>
+                        <div class="prod">
+                            <img src="images/comp11.png" alt="">
+                            <h4>Monitor</h4>
+                        </div>
+                        <div class="prod">
+                            <img src="images/comp12.png" alt="">
+                            <h4>CPU Cooler</h4>
+                        </div>
+                        <div class="prod">
+                            <img src="images/comp13.png" alt="">
+                            <h4>Gaming Chair</h4>
+                        </div>
+                        <div class="prod">
+                            <img class="si" src="images/comp14.png" alt="">
+                            <h4>Case</h4>
+                        </div>
+                        <div class="prod">
+                            <img src="images/comp15.png" alt="">
+                            <h4>TV</h4>
+                        </div>
+                        <div class="prod">
+                            <img class="si" src="images/comp16.png" alt="">
+                            <h4>Printer</h4>
+                        </div>
+                        <div class="prod">
+                            <img src="images/comp17.png" alt="">
+                            <h4>GPU</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+  
+
+        <script>
+            let content1 = document.querySelector('.cont1');
+            let content2 = document.querySelector('.cont2');
+            let content3 = document.querySelector('.cont3');
+            let content4 = document.querySelector('.cont4');
+            let content5 = document.querySelector('.cont5');
+
+            content2.addEventListener('click', ()=>{;
+                location.assign(`https://www.techlandbd.com/laptop`);
+            })
+
+            content3.addEventListener('click', ()=>{
+                location.assign(`https://www.techlandbd.com/desktop-offers`);
+            })
+
+            content4.addEventListener('click', ()=>{
+                location.assign(`https://www.techlandbd.com/offers`);
+            })
+
+
+         let menuopen = document.querySelector(`.menuopen`);
+         let menuicon = document.querySelector(`.menuopen i`);
+         let sidebar = document.querySelector(`.side_bar`);
+         menuopen.addEventListener('click', ()=>{
+            sidebar.style.visibility = `visible`;
+            sidebar.style.opacity = 1;
+            sidebar.style.left = `${0}rem`;
+            sidebar.style.zIndex =  5;
+            menuopen.style.borderColor = `yellow`;
+            menuicon.style.color = `yellow`;
+         })
+
+         let close = document.querySelector(`.close`);
+         close.addEventListener(`click`, ()=>{
+            sidebar.style.visibility = `hidden`;
+            sidebar.style.opacity = 0;
+            sidebar.style.left = `${-70}rem`;
+            sidebar.style.zIndex = 0;
+            menuopen.style.borderColor = ``;
+            menuicon.style.color = ``;
+         })
+
+
+
+         let open = document.querySelector(`.open`);
+         let show_menu = document.querySelector(`.inner_content`);
+         let number2 = 0;
+
+         open.addEventListener(`click`, ()=>{
+            if (number2 == 0){
+                show_menu.style.visibility = `visible`;
+                show_menu.style.opacity = 1;
+                show_menu.style.top = `${2.7}rem`;
+                number2++;
+            }
+
+            else{
+                show_menu.style.visibility = `hidden`;
+                show_menu.style.opacity = 0;
+                show_menu.style.top = `${5}rem`;
+                number2 = 0;
+            }
+         })
+
+
+        let icon = document.querySelectorAll('.list');
+        let drdp = document.querySelectorAll(`.dropdown_list`);
+        let rgt = document.querySelectorAll(`.right`);
+        let drdp_list = document.querySelectorAll(`.Dp`);
+        let number1 = 0;
+        
+
+        for(let i=0; i<icon.length; i++){
+
+            icon[i].addEventListener('click',()=>{    
+                if (number1 == 0){
+                    drdp[i].innerHTML = drdp_list[i].innerHTML;
+                    rgt[i].style.display = 'flex';
+                    rgt[i].style.padding = '1rem';
+                    number1++
+                }
+                else{
+                    rgt[i].style.display = 'none';
+                    number1 = 0;
+                }
+            })
+         }
+
+         let overlay = document.querySelector('.overlay');
+         let cls = document.querySelector(`.cls`);
+
+         window.addEventListener('load', ()=>{
+            overlay.classList.add("overlay_special_css");
+         })
+
+
+         cls.addEventListener('click', ()=>{
+            overlay.classList.remove("overlay_special_css");
+         })
+
+        </script>
+</body>
+</html>
