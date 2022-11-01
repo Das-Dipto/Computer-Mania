@@ -96,3 +96,34 @@ overlay.classList.add("overlay_special_css");
 cls.addEventListener('click', ()=>{
 overlay.classList.remove("overlay_special_css");
 })
+
+
+
+let category_link = [
+    `https://www.techlandbd.com/shop-laptop-computer`,
+    `https://www.techlandbd.com/processor`,
+    `https://www.techlandbd.com/motherboard`,
+    `https://www.techlandbd.com/shop-desktop-ram`,
+    `https://www.techlandbd.com/solid-state-drive`,
+    `https://www.techlandbd.com/computer-keyboard`,
+    `https://www.techlandbd.com/solid-state-drive`,
+    `https://www.techlandbd.com/computer-keyboard`,
+    `https://www.techlandbd.com/shop-computer-mouse`,
+    `https://www.techlandbd.com/headphone-speaker/shop-headphones-headsets`,
+    `https://www.techlandbd.com/shop-routers`,
+    `https://www.techlandbd.com/computer-monitor`,
+    `https://www.techlandbd.com/cpu-cooler`,
+    `https://www.techlandbd.com/gaming-chair-table`,
+    `https://www.techlandbd.com/computer-case`,
+    `https://www.techlandbd.com/tv`,
+    `https://www.techlandbd.com/printer`,
+    `https://www.techlandbd.com/graphics-card`
+];
+
+let prod_category = document.querySelectorAll('.prod');
+
+prod_category.forEach((item, index)=>{
+    item.addEventListener('click', ()=>{
+        location.href = category_link[index];
+    })
+})
