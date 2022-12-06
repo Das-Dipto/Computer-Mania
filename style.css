@@ -209,6 +209,10 @@ form div > input{
 .navbar{
     width: 100%;
     background-color: #232F3E;
+    position: sticky;
+    left: 0;
+    top:0;
+    z-index: 5;
 }
 
 .section1_container{
@@ -220,13 +224,13 @@ form div > input{
 
 .section1_container > h1{
     font-family: 'Merriweather', serif;
-    /* background: linear-gradient(90deg, #ff0000, #ffff00, #ff00f3, #0033ff, #ff00c4, #ff0000);
+    background: linear-gradient(90deg, #ff0000, #ffff00, #ff00f3, #0033ff, #ff00c4, #ff0000);
     background-size: 200%;
     text-transform: uppercase;
     font-size:1.78rem;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-    animation: heading_animation 10s linear infinite; */
+    animation: heading_animation 10s linear infinite;
     color:white;
     margin-right: 14rem;
     margin-left: 2rem;
