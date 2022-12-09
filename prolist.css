@@ -81,10 +81,29 @@ body{
     color:white;
 }
 
-@media screen and (min-width:1025px) and (max-width:1220px){}
-@media screen and (min-width:769px) and (max-width:1024px){}
-@media screen and (min-width:481px) and (max-width:768px){}
-@media screen and (min-width:320px) and (max-width:480px){}
+@media screen and (min-width:1025px) and (max-width:1200px){}
+
+@media screen and (min-width:769px) and (max-width:1024px){
+    .f-item{
+        width: 45%;
+    }
+}
+
+@media screen and (min-width:481px) and (max-width:768px){
+    .f-item{
+        width: 45%;
+    }
+}
+
+@media screen and (min-width:320px) and (max-width:480px){
+    .pro-flex{
+        justify-content: center;
+    }
+
+    .f-item{
+        width: 100%;
+    }
+}
 @media screen  and (max-width:319px){}
 
 
