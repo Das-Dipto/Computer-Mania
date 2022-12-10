@@ -33,9 +33,10 @@ body{
 .f-item{
     width: 30%;
     display: flex;
-    border:1px solid rgb(237, 237, 240);
+    border:1px solid rgb(208, 208, 209);
     border-radius: 5px;
     padding:1rem;
+    margin-bottom: 3rem;
 }
 
 .f-item:hover{
@@ -104,6 +105,15 @@ body{
         width: 100%;
     }
 }
-@media screen  and (max-width:319px){}
+
+@media screen  and (max-width:319px){
+    .pro-flex{
+        justify-content: center;
+    }
+
+    .f-item{
+        width: 100%;
+    }
+}
 
 
