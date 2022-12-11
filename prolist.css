@@ -8,6 +8,18 @@ body{
     background-color: #F2F4F8;
 }
 
+.input-class{
+    width: 85%;
+    margin:0 auto;
+    margin-top: 2rem;
+}
+
+.input-class input{
+    width: 100%;
+    padding:1rem;
+    font-size: 1rem;
+}
+
 .container{
     display: flex;
     flex-flow:column nowrap;
@@ -21,13 +33,20 @@ body{
     justify-content: space-between;
 }
 
+.pro-flex{
+    padding: 1.5rem 0rem;
+    margin-top: 3rem;
+}
+
+.special{
+    width: 30%;
+    border:1px solid rgb(208, 208, 209);
+    border-radius: 5px;
+}
+
 .if-item{
     width: 100%;
     margin-top: 1rem;
-}
-
-.pro-flex{
-    margin-top: 4rem;
 }
 
 .f-item{
